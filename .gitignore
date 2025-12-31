@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# fichier teste
+*uu.py
+*aa.py
+teste/
+test/
+*teste.py
+
 # C extensions
 *.so
 
