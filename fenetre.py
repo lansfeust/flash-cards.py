@@ -6,7 +6,7 @@
 # -----------------------------------------------
 #            Zone des 'imports' de modules
 # -----------------------------------------------
-import _______
+import tkinter
 
 # ----------------------------------------------------
 #        Zone de déclaration des variables globales
