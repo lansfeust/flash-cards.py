@@ -26,12 +26,15 @@ class Gestionnaire_fenetre(tkinter.Tk) :
         self.fenetre = fenetre
 #        super().__init__()
         fenetre.title("Fenêtre principal")
-        fenetre.geometry("600x800")
+        fenetre.geometry("777x1024")
+ 
+#        self.fond_image = tkinter.PhotoImage(file="img\\Gemini_Generated_Image_6mdy1r6mdy1r6mdy.png")
+#        fond_label = tkinter.Label( self.fenetre, image=self.fond_image)
+#        fond_label.place(x=0, y=0, relwidth=1, relheight=1)
+
         
-        
-        label9 = tkinter.Label(self.fenetre, text="bouton d'affichage page 1")
-        bouton1 = tkinter.Button(text='premier bouton',textvariable='premier bouton',padx=15,command=lambda:self.page_1() )
-        bouton1.grid(row=4, column=0, sticky="w")
+        from page_acceil import page_acceil
+        var = page_acceil( self.fenetre )
         pass
 
     def page_acceil(self):
