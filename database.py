@@ -1,46 +1,65 @@
 import sqlite3
-import datetime
 import random
 
-def connect_db():
+def connect_db(bd='flashcards' ):
     """Connecte à la base de données SQLite."""
-    conn = sqlite3.connect('flashcards.db')  # Nom de la base de données
-    return conn
+    base = bd+'.db'
+    connection = sqlite3.connect( base )  # Nom de la base de données
+    return connection
 
-def create_table(conn):
-    """Crée la table flashcards si elle n'existe pas."""
-    cursor = conn.cursor()
-    cursor.execute("""
+def create_table(connection):
+    """Crée les tables flashcards et famille si elle n'existent pas."""
+    flashcards="""
         CREATE TABLE IF NOT EXISTS flashcards (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             question TEXT,
             reponse TEXT,
-            type_carte TEXT,
+            famille TEXT,
             niveau INTEGER,
             dateDeVue INTEGER
         )
-    """)
-    conn.commit()
+    """
+    famille="""
+        CREATE TABLE IF NOT EXISTS famille (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            famille TEXT
+        )
+    """
+    cursor = connection.cursor()
+    
+    cursor.execute( flashcards )
+    connection.commit()
 
-def insert_flashcard(conn, question, reponse, type_carte, niveau, dateDeVue):
+    cursor.execute( famille )
+    connection.commit()
+
+def insert_flashcard(connection, question, reponse, famille, niveau, dateDeVue):
     """Insère une nouvelle flashcard dans la base de données."""
-    cursor = conn.cursor()
+    
+    cursor = connection.cursor()
     cursor.execute("""
-        INSERT INTO flashcards (question, reponse, type_carte, niveau, dateDeVue)
+        INSERT INTO flashcards (question, reponse, famille, niveau, dateDeVue)
         VALUES (?, ?, ?, ?, ?)
-    """, (question, reponse, type_carte, niveau, dateDeVue))
-    conn.commit()
+    """, (question, reponse, famille, niveau, dateDeVue))
+    connection.commit()
 
-def get_all_flashcards(conn):
-    """Récupère toutes les flashcards de la base de données."""
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM flashcards")
-    rows = cursor.fetchall()
-    return rows
+def get_all_flashcards(connection):
+#"""Récupère toutes les flashcards de la base de données ,
+# sauf si pas achivé(niveau != 0) , ou dateDeVue passé .
+# et limité a 15 entré 
+# et choisi aléatoirement dans la base de donné"""
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM flashcards WHERE niveau != 0 AND dateDeVue < date('now') ORDER BY RANDOM LIMIT 15")
+    liste_de_tuple = cursor.fetchall()
+# met aléatoirement le resultat     
+    liste_flashcards = list(liste_de_tuple)
+    random.shuffle(liste_flashcards)
 
-def get_flashcard_by_id(conn, card_id):
+    return liste_flashcards
+
+def get_flashcard_by_id(connection, card_id):
     """Récupère une flashcard spécifique par son ID."""
-    cursor = conn.cursor()
+    cursor = connection.cursor()
     cursor.execute("SELECT * FROM flashcards WHERE id = ?", (card_id,))
     row = cursor.fetchone()
     return row
