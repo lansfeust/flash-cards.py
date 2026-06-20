@@ -44,15 +44,19 @@ Fichiers du projet :
 
 from time import sleep
 from fenetre import GestionnaireFenetre 
+from database import connect_db , create_table
 
 
 # ----------------------------------------------------
 #        Zone de déclaration des variables globales
 # ----------------------------------------------------
+connection_db = connect_db()
 
 # -------------------------------------------------------
 #        Zone de déclaration des modules ou des fonctions
 # -------------------------------------------------------
+## Création des tables ( Si elle n'existe pas )
+create_table( connection_db )
 
 # -------------------------------------------------------
 #                        PROGRAMME                        
@@ -61,8 +65,6 @@ from fenetre import GestionnaireFenetre
 
 if __name__ == "__main__":
     fenetre = GestionnaireFenetre()
-
-
-
+    
     fenetre.executer()
 sleep( 2 )

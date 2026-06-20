@@ -63,3 +63,15 @@ def get_flashcard_by_id(connection, card_id):
     cursor.execute("SELECT * FROM flashcards WHERE id = ?", (card_id,))
     row = cursor.fetchone()
     return row
+
+def insert_famille(connection, famille_nom):
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO famille (famille) VALUES (?)", (famille_nom,))
+    connection.commit()
+
+def get_famille(connection):
+    """Récupère une flashcard spécifique par son ID."""
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM flashcards  ")
+    row = cursor.fetchone()
+    return row
