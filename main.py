@@ -4,7 +4,7 @@ Nom du projet : flash-Cards
 
 Nom du fichier : NAME
 
-Date de la dernière révision : 07/05/2026
+Date de la dernière révision : 20/06/2026
 
 Auteur(s) : EGO
 Révision N°: Version 0.1
@@ -12,7 +12,7 @@ Client : maison
 
 #-------------------------------------------------
 name='Package_name',
-    version='Version 0.5 ',
+    version='Version 0.6 ',
     packages=PackageList,PackageDirs
     url='Aucun',
     license='Libre',
@@ -28,8 +28,8 @@ Fichiers du projet :
     - main
     - base_Tk
     - FlashcardManager
-    - _______
-    - _______
+    - fenetre
+    - page_accueil
     - _______
     - _______
 
@@ -43,7 +43,7 @@ Fichiers du projet :
 # -----------------------------------------------
 
 from time import sleep
-from fenetre import Gestionnaire_fenetre , fenetre_principal
+from fenetre import GestionnaireFenetre 
 
 
 # ----------------------------------------------------
@@ -60,7 +60,7 @@ from fenetre import Gestionnaire_fenetre , fenetre_principal
 
 
 if __name__ == "__main__":
-    fenetre = Gestionnaire_fenetre( fenetre_principal )
+    fenetre = GestionnaireFenetre()
 
 
 

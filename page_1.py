@@ -1,21 +1,21 @@
-from fenetre import Gestionnaire_fenetre
 import tkinter
+from fenetre import GestionnaireFenetre
 
-class page_1(Gestionnaire_fenetre) :
+class Page1:
+    def __init__(self, parent: tkinter.Tk):
+        self.parent = parent
 
-    def __init__(self, fenetre):
-        super().__init__(fenetre)
-        
-        self.fenetre.title("Fenêtre n°1 avec 3 Textareas")
-        textarea1 = tkinter.Text(self.fenetre, height=5, width=30)
-        textarea1.grid(row=0, column=0, padx=10, pady=10)
-        # Facultatif: Ajouter des labels pour clarifier l'utilisation
-        label1 = tkinter.Label(self.fenetre, text="Textarea de la gage 1:")
-        label1.grid(row=1, column=0, sticky="w") # "w" pour aligner à gauche
-        
-        label9 = tkinter.Label(self.fenetre, text="bouton d'affichage page 2")
-        bouton1 = tkinter.Button(text='premier bouton',textvariable='premier bouton',padx=15,command=lambda:self.page_2() )
-        bouton1.grid(row=4, column=0, sticky="w")
+        # Efface les widgets précédents (optionnel, pour éviter les superpositions)
+        for widget in self.parent.winfo_children():
+            widget.destroy()
 
-        pass
+        # Utilise grid() pour tous les widgets
+        label = tkinter.Label(self.parent, text="Page 1")
+        label.grid(row=0, column=0, padx=10, pady=10)  # ✅ grid()
 
+        bouton_retour = tkinter.Button(
+            self.parent,
+            text="Retour à l'accueil",
+            command=lambda: self.parent.charger_page_accueil()
+        )
+        bouton_retour.grid(row=1, column=0, padx=10, pady=10)  # ✅ grid()

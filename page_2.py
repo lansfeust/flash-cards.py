@@ -1,7 +1,7 @@
-from fenetre import Gestionnaire_fenetre
+from fenetre import GestionnaireFenetre
 import tkinter
 
-class page_2(Gestionnaire_fenetre) :
+class page_2(GestionnaireFenetre) :
 
     def __init__(self, fenetre):
         super().__init__(fenetre)
