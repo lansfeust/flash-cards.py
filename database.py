@@ -70,8 +70,7 @@ def insert_famille(connection, famille_nom):
     connection.commit()
 
 def get_famille(connection):
-    """Récupère une flashcard spécifique par son ID."""
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM flashcards  ")
-    row = cursor.fetchone()
-    return row
+    cursor.execute("SELECT * FROM famille")
+    return cursor.fetchall()  # ✅ Retourne TOUTES les lignes
+
