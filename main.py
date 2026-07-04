@@ -4,7 +4,8 @@ Nom du projet : flash-Cards
 
 Nom du fichier : NAME
 
-Date de la dernière révision : 20/06/2026
+Date de la dernière révision : 04/07/2026
+Date de l'avant dernière révision : 20/06/2026
 
 Auteur(s) : EGO
 Révision N°: Version 0.1
@@ -12,7 +13,7 @@ Client : maison
 
 #-------------------------------------------------
 name='Package_name',
-    version='Version 0.6 ',
+    version='Version 0.7 ',
     packages=PackageList,PackageDirs
     url='Aucun',
     license='Libre',
@@ -44,19 +45,20 @@ Fichiers du projet :
  
 from time import sleep
 from fenetre import GestionnaireFenetre 
-from database import connect_db , create_table
+from database import connect_db
+from marque_page import class_marque_page
 
 
 # ----------------------------------------------------
 #        Zone de déclaration des variables globales
 # ----------------------------------------------------
 connection_db = connect_db()
+marque_page = class_marque_page()
 
 # -------------------------------------------------------
 #        Zone de déclaration des modules ou des fonctions
 # -------------------------------------------------------
-## Création des tables ( Si elle n'existe pas )
-create_table( connection_db )
+
 
 # -------------------------------------------------------
 #                        PROGRAMME                        
@@ -64,7 +66,18 @@ create_table( connection_db )
 
 
 if __name__ == "__main__":
-    fenetre = GestionnaireFenetre()
+    while True :
+        if marque_page.valeur == None:
+            import terminal_acceuil
+            terminal_acceuil.terminal_acceuil( marque_page )
+        if marque_page :
+#            import terminal_acceil
+            print('\n\tBRAVO ! ! ! \tFIN DE L\'APPLICATION ')#Efface-moi
+            break#Efface-moi
+            
+
+
+#    fenetre = GestionnaireFenetre() # Version graphique ( mise en pause faute de connaissance )
     
-    fenetre.executer()
-sleep( 2 )
+    sleep( 2 )#met le logiciel en pause pour fréné la demande de memoire et cpu 
+#    fenetre.executer()
