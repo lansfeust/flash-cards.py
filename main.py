@@ -67,14 +67,34 @@ marque_page = class_marque_page()
 
 if __name__ == "__main__":
     while True :
-        if marque_page.valeur == None:
+        print('marque_page.valeur\t',marque_page.valeur)#Efface-moi
+        print('marque_page.valeur\t',type(marque_page.valeur))#Efface-moi
+
+        if marque_page.valeur == 0 :
+
             import terminal_acceuil
             terminal_acceuil.terminal_acceuil( marque_page )
-        if marque_page :
+
+        elif marque_page.valeur == 1:
+
 #            import terminal_acceil
             print('\n\tBRAVO ! ! ! \tFIN DE L\'APPLICATION ')#Efface-moi
             break#Efface-moi
+
+        elif marque_page.valeur == 2:
+
+#            import terminal_acceil
+            print('\n\tBRAVO ! ! ! \tFIN DE L\'APPLICATION ')#Efface-moi
+            break#Efface-moi
+
+        elif marque_page.valeur == 3:
             
+            from terminal_page_3 import creation_famille
+            famille = creation_famille()# Initialisation
+            famille.input_famille_securiser()# insertion de la famille
+            famille.confirmation()
+            famille.input_famille()
+            break#Efface-moi
 
 
 #    fenetre = GestionnaireFenetre() # Version graphique ( mise en pause faute de connaissance )

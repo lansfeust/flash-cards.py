@@ -1,5 +1,5 @@
 class class_marque_page :
-    valeur = None
+    valeur = 0
     marque_page = None
 
     def __init__(self):

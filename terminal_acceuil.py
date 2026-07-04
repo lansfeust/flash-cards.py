@@ -30,7 +30,8 @@ def terminal_acceuil( marque_page ):
         #########Teste le choix de l'utilisateur , si le teste est bon , on passe a la suite #########
         try :
             choix = int(choix)
-            if choix > 0 and choix < 4 :# Si le choix et dans la liste ...
+            if choix >= 0 and choix < 4 :# Si le choix et dans la liste ...
+                print('if choix')
                 break
         except :
             continue
@@ -42,6 +43,7 @@ def terminal_acceuil( marque_page ):
 
     ## mise a jour de marque_page
     marque_page.valeur = choix
+    print('marque_page.valeur\t',marque_page.valeur)
     return None
 
 
