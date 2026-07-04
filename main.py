@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
         elif marque_page.valeur == 2:
 
-#            import terminal_acceil
+            from terminal_page_2 import terminal_creation_cards
             print('\n\tBRAVO ! ! ! \tFIN DE L\'APPLICATION ')#Efface-moi
             break#Efface-moi
 

@@ -74,6 +74,11 @@ def get_famille(connection):
     cursor.execute("SELECT * FROM famille")
     return cursor.fetchall()  # ✅ Retourne TOUTES les lignes
 
+def get_nombre_famille(connection):
+    cursor = connection.cursor()
+    nombre = cursor.execute("SELECT COUNT(id) FROM famille")
+    return cursor.fetchall()  # ✅ Retourne TOUTES les lignes
+
 def get_all_ID(connection):
     cursor = connection.cursor()
     cursor.execute("SELECT id FROM flashcards")
