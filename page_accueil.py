@@ -10,7 +10,7 @@ class PageAccueil:
         # Efface les widgets précédents
         for widget in self.parent.winfo_children():
             widget.destroy()
-
+######################################################################################
         #### Label d'affichage page 1  ####
         label9 = tkinter.Label(
             self.parent,
@@ -26,7 +26,7 @@ class PageAccueil:
             command=lambda: self.parent.charger_page_1()  # Appelle la méthode du parent
         )
         bouton1.grid(row=4, column=0, sticky="w")
-
+######################################################################################
         ### Label d'affichage page 2  ###
         label9 = tkinter.Label(
             self.parent,
@@ -34,7 +34,7 @@ class PageAccueil:
         )
         label9.grid(row=5, column=0, sticky="w")
 
-        # Bouton pour charger la page 1
+        # Bouton pour charger la page 2
         bouton1 = tkinter.Button(
             self.parent,
             text="Création d'une famille",
@@ -42,3 +42,20 @@ class PageAccueil:
             command=lambda: self.parent.charger_page_2()  # Appelle la méthode du parent
         )
         bouton1.grid(row=6, column=0, sticky="w")
+######################################################################################
+        ### Label d'affichage page 3  ###
+        label9 = tkinter.Label(
+            self.parent,
+            text="Bouton d'affichage page 1"
+        )
+        label9.grid(row=5, column=0, sticky="w")
+
+        # Bouton pour charger la page 3
+        bouton1 = tkinter.Button(
+            self.parent,
+            text="Affichage flash-cards",
+            padx=15,
+            command=lambda: self.parent.charger_page_3()  # Appelle la méthode du parent
+        )
+        bouton1.grid(row=7, column=0, sticky="w")
+######################################################################################

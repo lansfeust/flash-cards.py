@@ -13,9 +13,9 @@ class Page2:
         self.parent = parent
         self.connection = connect_db()
         self.clean()  # Efface les widgets précédents
+        self.decoration()
         self.Champ_de_saisie()
         self.Bouton_Retour()
-        self.decoration()
         self.aff_famille()
 
     def clean(self):
@@ -52,7 +52,7 @@ class Page2:
 
     def decoration(self):
         """Configure la taille et le titre de la fenêtre."""
-        self.parent.geometry("800x600")  # Largeur x Hauteur
+        self.parent.geometry("380x400")  # Largeur x Hauteur
         self.parent.title("Gestion des familles")
 
     def aff_famille(self):
@@ -75,6 +75,3 @@ class Page2:
         # Ajoute les noms des familles à la Listbox
         for ligne in famille:
             self.listbox.insert(tkinter.END, ligne[1])
-
-
-            

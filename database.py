@@ -74,3 +74,8 @@ def get_famille(connection):
     cursor.execute("SELECT * FROM famille")
     return cursor.fetchall()  # ✅ Retourne TOUTES les lignes
 
+def get_all_ID(connection):
+    cursor = connection.cursor()
+    cursor.execute("SELECT id FROM flashcards")
+    return cursor.fetchall()  # ✅ Retourne TOUTES les lignes
+

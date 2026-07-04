@@ -41,7 +41,7 @@ Fichiers du projet :
 # -----------------------------------------------
 #            Zone des 'imports' de modules
 # -----------------------------------------------
-
+ 
 from time import sleep
 from fenetre import GestionnaireFenetre 
 from database import connect_db , create_table
