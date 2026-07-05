@@ -5,7 +5,8 @@
 # -----------------------------------------------
 #		    Zone des 'imports' de modules
 # -----------------------------------------------
-from database import connect_db , insert_famille
+from database import connect_db , insert_famille , get_famille
+from fonction_perso import confirmation
 
 # ----------------------------------------------------
 #		Zone de déclaration des variables globales
@@ -20,14 +21,33 @@ from database import connect_db , insert_famille
 class creation_famille :
 
     def __init__(self):
+        self.connection = connect_db()# connection a la base de donné 
+        self.famille = get_famille( self.connection )#Extraction des familles
         pass
 
     def input_famille(self):
-        self.connection = connect_db()# connection a la base de donné 
-        insert_famille(self.connection , self.nom )
+        """
+            Sauvegarde de la famille dans la base de donnée
+        """
+        insert_famille(self.connection , self.famille_choisi )
         pass
 
-    def input_famille_securiser(self):
+    def affichage_famille(self):
+        print('-'*49)#Choix estetique
+                
+        print('\nListe de toutes les familles\n')
+
+        variable_temporaire = []# Utiliser pour effacer l'ID de self.famille 
+        for id_famille , famille in self.famille :
+            
+            print(famille)# affiche toutes les familles existante
+            variable_temporaire.append(famille)
+        
+        self.famille_sans_id = variable_temporaire # Efface les ID 
+
+        print('\n')
+
+    def ecriture_famille_securiser(self,message_erreur=None):
         caracteres_interdis = (' ',
                                ',',
                                '?',
@@ -52,19 +72,42 @@ class creation_famille :
                                '*',
                                '+',
                                '=',)
-        non_temporaire = input('Quel famille voulez-vous crée ?\n')
+        
+        self.affichage_famille()
 
+        if message_erreur :
+            print(message_erreur)
+
+        non_temporaire = input('\nQuel famille voulez-vous crée ?\n')
+
+        for verification in non_temporaire :
+            if verification in caracteres_interdis :
+                message_erreur='caracteres interdis !\tUniquement des lettres !'
+                self.ecriture_famille_securiser(message_erreur)
+                break
+            
         if len( non_temporaire )  < 3 :
-            print('le nom est trop court ')
+            message_erreur='le nom est trop court '
+            self.ecriture_famille_securiser(message_erreur)
         elif len(non_temporaire) > 15 :
-            print('le nom est trop long')
+            message_erreur='le nom est trop long'
+            self.ecriture_famille_securiser(message_erreur)
         elif non_temporaire is int :
-            print('la famille ne peut pas etre un nombre ')
-        elif non_temporaire in caracteres_interdis :
-            print('caracteres interdis !\tUniquement des lettres !')
+            message_erreur='la famille ne peut pas etre un nombre '
+            self.ecriture_famille_securiser(message_erreur)
         else :
             self.nom = non_temporaire
+            self.famille_choisi = non_temporaire #deuxiéme version ( a choisir plus tard )
+
     def confirmation(self):
+
+        question = '\n\tEtes vous sûr de vouloir crée la famille "',self.nom,'" ? \n\n'
+        retour = confirmation(self.famille_choisi , None , self.famille_sans_id )
+
+        if retour == False :
+            self.ecriture_famille_securiser()
+
+    def old_confirmation(self):
         print('\n\tEtes vous sûr de vouloir crée la famille ',self.nom,' ? \n\n')
         confirmation = input("Ecrivez 'y' ou 'o' pour confirmé ou 'n' pour annulé et 'q' pour quitter")
 
@@ -78,6 +121,7 @@ class creation_famille :
             else :     
                 print('\n\tEtes vous sûr de vouloir crée la famille ',self.nom,' ? \n\n ')
                 confirmation = input("Ecrivez 'y' ou 'o' pour confirmé ou 'o' et 'n' pour annulé ")
+
 # -------------------------------------------------------
 #						PROGRAMME
 # -------------------------------------------------------
@@ -85,12 +129,12 @@ class creation_famille :
 
 
 if __name__ == "__main__" :
-    _______
-    pass
+            
+    from terminal_page_3 import creation_famille
 
-
-
-
-
+    teste = creation_famille()# Initialisation
+    teste.ecriture_famille_securiser()# insertion de la famille
+    teste.confirmation()
+    teste.input_famille()
 
 

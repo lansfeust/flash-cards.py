@@ -34,7 +34,7 @@ def terminal_acceuil( marque_page ):
         try :
             choix = int(choix)
             if choix >= 0 and choix < 4 :# Si le choix et dans la liste ...
-                confirmation(list_de_choix + '\nQuel page affiché ?\tchoisiser un nombre' , None , list_de_choix)
+                confirmation(list_de_choix + '\nQuel page affiché ?\tchoisiser un nombre' , None , list_de_choix)#Demande  confirmation a l'utilisateur
                 break
         except :
             continue

@@ -90,14 +90,15 @@ if __name__ == "__main__":
 
             ###Gestion de la question#####
             creation_cards.question()
+            creation_cards.reponse()
+            creation_cards.sauvegarde()
             break#Efface-moi
 
         elif marque_page.valeur == 3:
             
             from terminal_page_3 import creation_famille
             famille = creation_famille()# Initialisation
-            famille.input_famille_securiser()# insertion de la famille
-            famille.confirmation()
+            famille.ecriture_famille_securiser()# insertion de la famille
             famille.input_famille()
             break#Efface-moi
         

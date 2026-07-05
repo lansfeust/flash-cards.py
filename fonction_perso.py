@@ -12,6 +12,7 @@ def confirmation(depart , si_oui , si_non):
                             'oui')#Liste des actions qui veux dire 'OUI'
         
         if choix in liste_autorisé :#Si oui on quitte la fonction et passe a la suite du script
+            return True
             break
 
         elif choix == 'n' or choix == 'non' or choix == 'no':# Si non , on re-pose la question
@@ -26,6 +27,7 @@ def confirmation(depart , si_oui , si_non):
                 non = """\n {0}\n""".format(str(si_non))
                 depart = input( non )
             
+            return False
         elif choix =='q' or choix == 'quit' :
             exit()
 

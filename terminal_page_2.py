@@ -7,6 +7,7 @@
 # -----------------------------------------------
 from database import *
 from fonction_perso import *
+from time import time
 
 # ----------------------------------------------------
 #		Zone de déclaration des variables globales
@@ -36,7 +37,7 @@ class terminal_creation_cards:
             temporaire = str(famille)+'\t=>\t'+str(id_famille)
             print(temporaire)# affiche toutes les familles et le numéros qui correspond 
             self.liste_famille.append(temporaire)
-            
+
         print('\n')
 
     def selection_famille(self):
@@ -88,10 +89,13 @@ class terminal_creation_cards:
         label ='\tPosé votre question ( 255 caractéres maximum est 3 caractéres minimum )\n'
         question = input(label)
         confirmation(question , None , label )
-    
+        self.question = question
+
     def reponse(self):
-        question = input('\tPosé votre question ( 255 caractéres maximum est 3 caractéres minimum )')
-        pass
+        label ='\tPosé votre réponse ( 255 caractéres maximum est 3 caractéres minimum )\n'
+        reponse = input(label)
+        confirmation(reponse , None , label )
+        self.reponse = reponse
 
     def securité_paragraphe(self , paragraphe):
         
@@ -99,7 +103,9 @@ class terminal_creation_cards:
             if len( paragraphe ) > 255 or len( paragraphe ) < 4 :
                 pass
 
-
+    def sauvegarde(self):
+        insert_flashcard(self.connection, self.question, self.reponse, self.famille_choisi, 1, time()+(60*60*24))
+        pass
 
 # -------------------------------------------------------
 #						PROGRAMME
