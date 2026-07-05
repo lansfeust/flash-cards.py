@@ -4,8 +4,8 @@ Nom du projet : flash-Cards
 
 Nom du fichier : NAME
 
-Date de la dernière révision : 04/07/2026
-Date de l'avant dernière révision : 20/06/2026
+Date de la dernière révision : 05/07/2026
+Date de l'avant dernière révision : 04/07/2026
 
 Auteur(s) : EGO
 Révision N°: Version 0.1
@@ -95,9 +95,5 @@ if __name__ == "__main__":
             famille.confirmation()
             famille.input_famille()
             break#Efface-moi
-
-
-#    fenetre = GestionnaireFenetre() # Version graphique ( mise en pause faute de connaissance )
-    
+        
     sleep( 2 )#met le logiciel en pause pour fréné la demande de memoire et cpu 
-#    fenetre.executer()
