@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
         elif marque_page.valeur == 1:
 
-#            import terminal_acceil
+            from terminal_page_1 import utilisation_flashCards
             print('\n\tBRAVO ! ! ! \tFIN DE L\'APPLICATION ')#Efface-moi
             break#Efface-moi
 
@@ -99,6 +99,7 @@ if __name__ == "__main__":
             from terminal_page_3 import creation_famille
             famille = creation_famille()# Initialisation
             famille.ecriture_famille_securiser()# insertion de la famille
+            famille.confirmation()
             famille.input_famille()
             break#Efface-moi
         

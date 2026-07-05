@@ -49,7 +49,7 @@ def get_all_flashcards(connection):
 # et limité a 15 entré 
 # et choisi aléatoirement dans la base de donné"""
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM flashcards WHERE niveau != 0 AND dateDeVue < date('now') ORDER BY RANDOM LIMIT 15")
+    cursor.execute("SELECT * FROM flashcards WHERE niveau != 0 AND dateDeVue < date('now') LIMIT 15")
     liste_de_tuple = cursor.fetchall()
 # met aléatoirement le resultat     
     liste_flashcards = list(liste_de_tuple)

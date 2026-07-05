@@ -120,6 +120,8 @@ if __name__ == "__main__" :
 
     ###Gestion de la question#####
     teste.question()
+    teste.reponse()
+    teste.sauvegarde()
 
 
 
