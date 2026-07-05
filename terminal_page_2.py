@@ -32,9 +32,11 @@ class terminal_creation_cards:
         
         print('\nListe de toutes les familles\n')
         for famille , id_famille in self.famille :
+
             temporaire = str(famille)+'\t=>\t'+str(id_famille)
             print(temporaire)# affiche toutes les familles et le numéros qui correspond 
             self.liste_famille.append(temporaire)
+            
         print('\n')
 
     def selection_famille(self):

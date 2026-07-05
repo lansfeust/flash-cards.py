@@ -6,6 +6,7 @@
 #		    Zone des 'imports' de modules
 # -----------------------------------------------
 from database import create_table , connect_db
+from fonction_perso import confirmation
 
 # ----------------------------------------------------
 #		Zone de déclaration des variables globales
@@ -25,16 +26,19 @@ création de famille\t=>\t3
 def terminal_acceuil( marque_page ):
     
     while True :
-        choix = input(list_de_choix + 'Quel page affiché ?\tchoisiser un nombre\n\n')
+        print('-'*49)#Choix estetique
+
+        choix = input(list_de_choix + '\nQuel page affiché ?\tchoisiser un nombre\n\n')
 
         #########Teste le choix de l'utilisateur , si le teste est bon , on passe a la suite #########
         try :
             choix = int(choix)
             if choix >= 0 and choix < 4 :# Si le choix et dans la liste ...
-                print('if choix')
+                confirmation(list_de_choix + '\nQuel page affiché ?\tchoisiser un nombre' , None , list_de_choix)
                 break
         except :
             continue
+
 
 
     ## Création des tables ( Si elle n'existe pas )

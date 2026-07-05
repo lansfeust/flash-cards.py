@@ -20,7 +20,7 @@ name='Package_name',
     author='EGO',
     author_email='lansfeust@hotmail.fr',
     description=' Les flash cards sont des cartes d'apprentissage avec une question ou un mot d'un côté et une
-réponse ou une définition de l'autre. Elles sont utilisées pour mémoriser et tester des
+réponse ou une définition de l'autre. Elles sont utilisées pour mémoriser et creation_cardsr des
 informations efficacement, favorisant la répétition espacée et la consolidation du savoir. (v1 chatgpt)'
 
 #-------------------------------------------------
@@ -44,7 +44,6 @@ Fichiers du projet :
 # -----------------------------------------------
  
 from time import sleep
-from fenetre import GestionnaireFenetre 
 from database import connect_db
 from marque_page import class_marque_page
 
@@ -67,9 +66,7 @@ marque_page = class_marque_page()
 
 if __name__ == "__main__":
     while True :
-        print('marque_page.valeur\t',marque_page.valeur)#Efface-moi
-        print('marque_page.valeur\t',type(marque_page.valeur))#Efface-moi
-
+        
         if marque_page.valeur == 0 :
 
             import terminal_acceuil
@@ -84,7 +81,15 @@ if __name__ == "__main__":
         elif marque_page.valeur == 2:
 
             from terminal_page_2 import terminal_creation_cards
-            print('\n\tBRAVO ! ! ! \tFIN DE L\'APPLICATION ')#Efface-moi
+            
+            creation_cards = terminal_creation_cards()
+            ###Gestion des familles ####
+            creation_cards.affichage_famille()
+            creation_cards.selection_famille()
+            creation_cards.confirmation_famille()
+
+            ###Gestion de la question#####
+            creation_cards.question()
             break#Efface-moi
 
         elif marque_page.valeur == 3:
@@ -96,4 +101,3 @@ if __name__ == "__main__":
             famille.input_famille()
             break#Efface-moi
         
-    sleep( 2 )#met le logiciel en pause pour fréné la demande de memoire et cpu 
